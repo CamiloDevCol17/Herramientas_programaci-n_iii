@@ -1,0 +1,46 @@
+CREATE DATABASE DBFACTURAS;
+GO
+
+USE DBFACTURAS;
+GO
+
+CREATE TABLE TBLSEGURIDAD (
+    IdSeguridad int IDENTITY(1,1) PRIMARY KEY,
+    StrUsuario varchar(50) NOT NULL,
+    StrClave varchar(50) NOT NULL,
+    StrRol varchar(50) NOT NULL
+);
+
+CREATE TABLE TBLEMPLEADO (
+    IdEmpleado int IDENTITY(1,1) PRIMARY KEY,
+    strNombre varchar(100) NOT NULL,
+    NumDocumento bigint NOT NULL,
+    StrDireccion varchar(100),
+    StrTelefono varchar(20),
+    StrEmail varchar(100),
+    IdRolEmpleado int
+);
+
+CREATE TABLE TBLPRODUCTO (
+    IdProducto int IDENTITY(1,1) PRIMARY KEY,
+    StrNombre varchar(100) NOT NULL,
+    StrCodigo varchar(50) NOT NULL,
+    NumPrecioCompra float NOT NULL,
+    NumPrecioVenta float NOT NULL,
+    IdCategoria int,
+    NumStock int NOT NULL
+);
+
+CREATE TABLE TBLCLIENTE (
+    IdCliente int IDENTITY(1,1) PRIMARY KEY,
+    StrNombre varchar(100) NOT NULL,
+    NumDocumento bigint NOT NULL,
+    StrDireccion varchar(100),
+    StrTelefono varchar(20),
+    StrEmail varchar(100),
+    StrCiudad varchar(50)
+);
+
+-- Usuario administrador por defecto
+INSERT INTO TBLSEGURIDAD (StrUsuario, StrClave, StrRol) 
+VALUES ('admin', '1234', 'Administrador');
